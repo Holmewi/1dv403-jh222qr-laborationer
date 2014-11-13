@@ -2,7 +2,10 @@
 
 window.onload = function(){
 	
-	var secret = 50; // Detta tal behöver bytas ut mot ett slumpat tal.
+	var max = 100;
+	var min = 1;
+	var secret = Math.floor( Math.random() * (max-min)+1 )+min;; // Detta tal behöver bytas ut mot ett slumpat tal.
+
 	
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var guess = function(number){
@@ -10,8 +13,8 @@ window.onload = function(){
 		console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
 			
 		// Plats för förändring.
-
-
+		
+		
 		// Returnera exempelvis: 
 		// [true, "Grattis du vann! Det hemliga talet var X och du behövde Y gissningar för att hitta det."]
 		// [false, "Det hemliga talet är högre!"]
@@ -21,7 +24,7 @@ window.onload = function(){
 	
 	// ------------------------------------------------------------------------------
 
-
+	console.log(secret);
 
 	// Kod för att hantera utskrift och inmatning. Denna ska du inte behöva förändra
 	var p = document.querySelector("#value"); // Referens till DOM-noden med id="#value"
