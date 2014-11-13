@@ -13,7 +13,12 @@ window.onload = function(){
 		console.log("Du gissade: " + number); // Detta nummer är det som användaren gissade på.
 			
 		// Plats för förändring.
-		
+		if (number != secret){
+			
+		}
+		else{
+			return [true, "Grattis du vann! Det hemliga talet var X och du behövde Y gissningar för att hitta det."]
+		}
 		
 		// Returnera exempelvis: 
 		// [true, "Grattis du vann! Det hemliga talet var X och du behövde Y gissningar för att hitta det."]
