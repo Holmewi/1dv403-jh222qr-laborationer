@@ -9,10 +9,14 @@ window.onload = function(){
 
 			// Din kod här.
 
-			var nowDate = new Date().getTime();
-			var dateToBirthday = new Date(date).getTime();
+			var nowDate = new Date();
+			var nowDateTime = nowDate.getTime();
+			var birthday = new Date(date);
+			var birthdayTime = new Date(date).getTime();
 			console.log(nowDate);
-			console.log(dateToBirthday);
+			console.log(nowDateTime);
+			console.log(birthday);
+			console.log(birthdayTime);
 			
 
 	};
