@@ -2,13 +2,23 @@
 
 window.onload = function(){
 
+	
+	
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
-		// Plats för förändring.		
+		// Plats för förändring.
+		
+		
+		if (input.lenght > 0) {
+			
+			
+		} else {
+			return "Du måste skriva något";
+		};
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 	
-
+ 		
 
 
 
