@@ -9,14 +9,20 @@ window.onload = function(){
 
 			// Din kod här.
 
-			var nowDate = new Date();
-			var nowDateTime = nowDate.getTime();
+			var curDate = new Date();
+			var curDateTime = curDate.getTime();
 			var birthday = new Date(date);
 			var birthdayTime = new Date(date).getTime();
-			console.log(nowDate);
-			console.log(nowDateTime);
-			console.log(birthday);
-			console.log(birthdayTime);
+			//console.log(curDate);
+			//console.log(curDateTime);
+			//console.log(birthday);
+			//console.log(birthdayTime);
+			
+			console.log(curDate.getMonth())
+			
+			if (birthday.getMonth() == curDate.getMonth() && birthday.getDay() == curDate.getDay()){
+				return 0;
+			}
 			
 
 	};
