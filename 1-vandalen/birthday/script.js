@@ -9,8 +9,8 @@ window.onload = function(){
 
 			// Din kod här.
 
-
-
+			var nowDate = new Date();
+			//console.log(nowDate);
 
 	};
 	// ------------------------------------------------------------------------------
