@@ -10,14 +10,14 @@ window.onload = function(){
 			var curDate = new Date();
 			var curDateTime = Math.ceil(curDate.getTime() / (1000*60*60*24));
 			var birthday = new Date(date);
-			var birthdayTime = Math.ceil(birthday.getTime() / (1000*60*60*24));
+			var birthdayTime = Math.ceil(birthday.getTime() / (1000*60*60*24) + 1);
 			var daysToBirthday = Math.ceil((birthdayTime - curDateTime));
 			var diffYear = curDate.getYear() - birthday.getYear();
 			
 			//console.log(curDate);
-			//console.log(curDateTime);
+			console.log(curDateTime);
 			//console.log(birthday);
-			//console.log(birthdayTime);
+			console.log(birthdayTime);
 			//console.log(curDate.getFullYear());
 			//console.log(birthday.getFullYear());
 
@@ -31,11 +31,13 @@ window.onload = function(){
 				return 1;
 			}
 			*/
+			
 			if (curDate.getFullYear() != birthday.getFullYear()){
-				var leapYear = birthday.getFullYear();
-				for (var i = 0; i <= diffYear; ++i){
+				var leapYear = birthday.getFullYear() + 1;
+				for (var i = 1; i < diffYear; ++i){
 					if (leapYear % 4 == 0) {
 				        console.log(leapYear);
+				        ++daysToBirthday;
 			        }
 			        leapYear++;
 			        
@@ -45,6 +47,8 @@ window.onload = function(){
 			
 				birthday.setFullYear(curDate.getFullYear());
 				daysToBirthday = daysToBirthday + (365 * diffYear);
+				
+				
 			}
 			
 			/*
@@ -64,7 +68,6 @@ window.onload = function(){
 			if (birthdayTime == curDateTime + 1){
 				return 1;
 			}
-			
 			return daysToBirthday;
 			
 			
