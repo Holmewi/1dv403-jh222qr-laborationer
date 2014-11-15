@@ -15,9 +15,9 @@ window.onload = function(){
 			var diffYear = curDate.getYear() - birthday.getYear();
 			
 			//console.log(curDate);
-			console.log(curDateTime);
+			//console.log(curDateTime);
 			//console.log(birthday);
-			console.log(birthdayTime);
+			//console.log(birthdayTime);
 			//console.log(curDate.getFullYear());
 			//console.log(birthday.getFullYear());
 
@@ -31,12 +31,12 @@ window.onload = function(){
 				return 1;
 			}
 			*/
-			
-			if (curDate.getFullYear() != birthday.getFullYear()){
+			if (curDate > birthday){
+				if (curDate.getFullYear() != birthday.getFullYear()){
 				var leapYear = birthday.getFullYear() + 1;
 				for (var i = 1; i < diffYear; ++i){
 					if (leapYear % 4 == 0) {
-				        console.log(leapYear);
+				        //console.log(leapYear);
 				        ++daysToBirthday;
 			        }
 			        leapYear++;
@@ -49,7 +49,27 @@ window.onload = function(){
 				daysToBirthday = daysToBirthday + (365 * diffYear);
 				
 				
+				}
+			
+			
+			
+				if (birthdayTime == curDateTime){
+					return 0;
+				}
+				if (birthdayTime == curDateTime + 1){
+					return 1;
+				}
+				if (birthday.getMonth() < curDate.getMonth() || birthday.getDate() < curDate.getDate()){
+					console.log("TEST");
+					daysToBirthday = 365 + daysToBirthday;
+				}
+				
+				return daysToBirthday;
 			}
+			else{
+				return 2;
+			}
+			
 			
 			/*
 			console.log(2014 % 4);
@@ -62,18 +82,6 @@ window.onload = function(){
 			console.log(diffYear);
 			*/
 			
-			if (birthdayTime == curDateTime){
-				return 0;
-			}
-			if (birthdayTime == curDateTime + 1){
-				return 1;
-			}
-			return daysToBirthday;
-			
-			
-			
-		
-		
 			/*
 			if (curDateTime - birthdayTime > 2){
 				birthday.setFullYear(curDate.setFullYear() + 1);
@@ -98,14 +106,7 @@ window.onload = function(){
 						return daysToBirthday;
 					}
 					*/
-					
-					
-					
-					
-					
 			
-				
-
 	};
 	// ------------------------------------------------------------------------------
 
@@ -128,6 +129,8 @@ window.onload = function(){
 				case 0: message = "Grattis på födelsedagen!";
 					break;
 				case 1: message = "Du fyller år imorgon!";
+					break;
+				case 2: message = "Något fel inträffade!";
 					break;
 				default: message = "Du fyller år om " + answer + " dagar";
 					break;
