@@ -5,10 +5,15 @@ var makePerson = function(persArr){
 	// Din kod här...
 	var result = {};
 	
-	var names;
-	names = persArr.map(function(name){ return name;});
-
-
+	// Tar ut åldrarna från arrayen och sorterar dem
+	// Sorterar även icke ASCII-bokstäver
+	// Källa: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+	var names = persArr.map(function(name){ return name.name;}).sort(function(a, b){ return a.localeCompare(b)});
+	
+	// Lägger ihop alla namn i arrayen och skiljer dem med ett kommatecken
+	// Källa: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
+	names = names.join(', ');
+	
 	// Tar ut åldrarna från arrayen
 	// Varför age.age?
 	var ages = persArr.map(function(age){ return age.age;});
@@ -25,8 +30,7 @@ var makePerson = function(persArr){
 	// Rundar av till närmsta heltal
 	averageAge = Math.round(averageAge / ages.length);
 
-	//averageAge = Math.round(this, ages / ages.length);
-	console.log(averageAge);
+	//console.log(averageAge);
 	
 	// Skickar in egenskaperna i objektet
 	result.minAge = minAge;
@@ -50,4 +54,3 @@ var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, 
 var result = makePerson(data);
 
 console.log(result);
-console.log(ages);
