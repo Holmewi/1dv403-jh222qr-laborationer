@@ -1,0 +1,100 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+body {
+	line-height: 1;
+	color: black;
+	background: #b0e0e6;
+}
+ol, ul {
+	list-style: none;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption, th, td {
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: "";
+}
+blockquote, q {
+	quotes: "" "";
+}
+
+#wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    max-width: 500px;
+    height: auto;
+    background-color: #b0e0e6;
+}
+
+header {
+    width: 95%;
+    padding-bottom:20px;
+    margin: auto;
+}
+
+main {
+    width: 100%;
+    background-color: #665522;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    height: auto;
+}
+
+section {
+    width: 95%;
+    margin: auto;
+    overflow: auto;
+    height: auto;
+}
+
+#textField {
+    -webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	width: 100%;
+    min-height: 50px;
+    clear:both;
+}
+
+#send {
+    margin-top:7px;
+    float:right;
+    width: 150px;
+    font-size: 100px;
+    font-family: verdana;
+}
+
+/* JS elements  */
+.message {
+    min-width: 200px;
+    min-height: 30px;
+    background-color: black;
+}
