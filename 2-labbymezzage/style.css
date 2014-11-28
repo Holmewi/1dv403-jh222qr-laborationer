@@ -99,8 +99,8 @@ main {
 
 #comments ul {
     width: 100%;
-  display: table;
-  table-layout: fixed;
+    display: table;
+    table-layout: fixed;
     font-size: 18px;
 }
 

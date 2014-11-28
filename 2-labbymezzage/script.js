@@ -3,12 +3,18 @@
 // Objektet
 function Message(textString) {
     
+    var ul = document.getElementById("commentList");
     var li = document.createElement("li");
-    //var ul = document.querySelector("#messages");
-    li.className = "comment";
+    var article = document.createElement("article");
+    var aside = document.createElement("aside");
+    var time = document.createElement("time");
     
-    document.ul.appendChild(li);
-    //ul.innerHTML = "<li>Testar, testar</li>";"
+    
+    ul.appendChild(li);
+    li.appendChild(article);
+    article.innerHTML = textString;
+    
+
     
     
 }
