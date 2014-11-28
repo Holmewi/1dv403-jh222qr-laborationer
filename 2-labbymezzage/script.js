@@ -38,9 +38,12 @@ window.onload = function() {
         
         var date = new Date();
         var dateTime = date.dateTime();
+        // Sparar värdet från textfältet med relevant id
+        var textString = document.getElementById("textField").value;
         
         // Skapar ett nytt objekt
-        new Message("TEMP TEMP", date, dateTime);
+        new Message(textString, date, dateTime);
+        
         return false;
     }
  
