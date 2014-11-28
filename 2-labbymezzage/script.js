@@ -17,18 +17,31 @@ function Message(textString, date, dateTime) {
     article.innerHTML = textString;
     time.innerHTML = dateTime;
     
-    // Aside-fönster
-    //aside.innerHTML += "<img src='pics/iconTime.png' class='showDate' alt='Show date'/><img src='pics/iconDelete.png' class='deleteMessage' alt='Delete message'/>";
+    // Datumknappen i aside
     var showDateButton = document.createElement("input");
     showDateButton.type = "button";
     showDateButton.setAttribute("id", "showDateButton");
+    
+    showDateButton.onclick = function(){
+        alert("Inlägget skapades den " + date);
+    }
+    
+    aside.appendChild(showDateButton);
+    
+    // Deleteknappen i aside
     var showDeleteButton = document.createElement("input");
     showDeleteButton.type = "button";
     showDeleteButton.setAttribute("id", "showDeleteButton");
     
-    aside.appendChild(showDateButton);
-    aside.appendChild(showDeleteButton);
+    showDeleteButton.onclick = function(){
+        var result = confirm("Är du säker att du vill ta bort inlägget?");
+        if(result == true){
+            ul.removeChild(li);
+        }
+        
+    };
     
+    aside.appendChild(showDeleteButton);
 }
 
 window.onload = function() {
@@ -44,7 +57,7 @@ window.onload = function() {
         
         // Kontrollerar att textsträngen inte är tom
         if(textString === ""){
-            alert("då måste skriva något!");
+            alert("Du måste skriva något!");
         } else {
            // Skapar ett nytt objekt
             new Message(textString, date, dateTime);
