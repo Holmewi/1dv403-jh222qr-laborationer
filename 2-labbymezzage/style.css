@@ -133,9 +133,40 @@ main {
     font-family:verdana;
 }
 
+.showDate {
+    width: 20px;
+    float: left;
+}
 
-/* JS elements  */
+.deleteMessage {
+    width: 20px;
+    float: right;
+}
 
+/* JS elements */
+#showDateButton {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    background-image:url("pics/iconTime.png");
+    background-size: 20px 20px;
+    cursor:pointer;
+    border: none;
+    float:left;
+}
+
+#showDeleteButton {
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    background-image:url("pics/iconDelete.png");
+    background-size: 20px 20px;
+    cursor:pointer;
+    border: none;
+    float:right;
+}
 
 .comment {
     display:block;
