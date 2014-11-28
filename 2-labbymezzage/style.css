@@ -68,7 +68,7 @@ main {
     height: auto;
 }
 
-section {
+#form {
     width: 95%;
     margin: auto;
     overflow: auto;
@@ -92,9 +92,54 @@ section {
     font-family: verdana;
 }
 
+#comments {
+    width: 95%;
+    margin: auto;
+}
+
+#comments ul {
+    width: 100%;
+  display: table;
+  table-layout: fixed;
+    font-size: 18px;
+}
+
+#comments ul li {
+    width: auto;
+    background: #F1F1F1;
+    margin: 0px 0px 7px 0px;
+    padding: 10px;
+    overflow: auto;
+    clear:both;
+}
+
+#commentList article {
+    float:left;
+    width:85%;
+}
+
+#commentList aside {
+    width:10%;
+    float:right;
+    background: green;
+}
+
+#commentList time {
+    width:100%;
+    float: right;
+    text-align: right;
+    background: pink;
+    font-size:10px;
+    font-family:verdana;
+}
+
+
 /* JS elements  */
-.message {
-    min-width: 200px;
+
+
+.comment {
+    display:block;
+    min-width: 100%;
     min-height: 30px;
     background-color: black;
 }
