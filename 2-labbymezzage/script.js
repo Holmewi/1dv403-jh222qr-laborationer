@@ -1,7 +1,7 @@
 "use strict";
 
 // Objektet
-function Message(textString) {
+function Message(textString, date) {
     
     var ul = document.getElementById("commentList");
     var li = document.createElement("li");
@@ -12,7 +12,10 @@ function Message(textString) {
     
     ul.appendChild(li);
     li.appendChild(article);
+    li.appendChild(aside);
+    li.appendChild(time);
     article.innerHTML = textString;
+    time.innerHTML = date;
     
 
     
@@ -24,10 +27,10 @@ window.onload = function() {
     
     submit.onclick = function() {
         
+        var date = new Date();
         // Skapar ett nytt objekt
-        new Message("TEMP TEMP");
+        new Message("TEMP TEMP", time);
         return false;
     }
-    
-    
+ 
 }
