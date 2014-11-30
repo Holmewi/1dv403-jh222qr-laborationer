@@ -3,7 +3,8 @@
 // Konstruktor som tar hand om meddelandet och datum
 function Message(message, date){
     
-    console.log(message + date);
+    console.log(message);
+    console.log(date);
     
     this.getString = function() {
         return message;
@@ -21,3 +22,4 @@ function Message(message, date){
         date = _date;
     };
 }
+
