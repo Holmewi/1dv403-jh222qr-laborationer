@@ -28,6 +28,7 @@ Message.prototype.showMessage = function() {
     li.appendChild(time);
     article.innerHTML = this.getString();
     time.innerHTML = this.getDate().dateTime();
+    
 };
 
 // En datumhanterade skapad för att få fram rätt format på tiden
