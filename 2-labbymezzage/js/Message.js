@@ -33,5 +33,5 @@ Message.prototype.showMessage = function() {
 // En datumhanterade skapad för att få fram rätt format på tiden
 // Källa: http://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript
 Date.prototype.dateTime = function() {
-    return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes();
+    return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds();
 }
