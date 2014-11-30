@@ -15,6 +15,7 @@ function Message(message, date){
     this.setDate(date);
 }
 
+/*
 Message.prototype.showMessage = function() {
     var ul = document.getElementById("commentList");
     var li = document.createElement("li");
@@ -28,11 +29,20 @@ Message.prototype.showMessage = function() {
     li.appendChild(time);
     article.innerHTML = this.getString();
     time.innerHTML = this.getDate().dateTime();
-    
-};
+};*/
 
 // En datumhanterade skapad för att få fram rätt format på tiden
 // Källa: http://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript
 Date.prototype.dateTime = function() {
     return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds();
+}
+
+Message.prototype.toString = function() {
+    return this.getText() + " (" + this.getDate() + ")";
+}
+
+Message.prototype.getHTMLText = function() {
+    // Skapar en radbrydning vid utskrift av meddelandet
+    // Källa: http://stackoverflow.com/questions/863779/javascript-how-to-add-line-breaks-to-an-html-textarea
+    return this.getString().replace(/\r?\n/g, '<br />');
 }
