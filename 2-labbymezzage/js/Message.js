@@ -15,7 +15,7 @@ function Message(message, date){
     this.setDate(date);
 }
 
-Message.prototype.showMessage = function(){
+Message.prototype.showMessage = function() {
     var ul = document.getElementById("commentList");
     var li = document.createElement("li");
     var article = document.createElement("article");
@@ -27,6 +27,11 @@ Message.prototype.showMessage = function(){
     li.appendChild(aside);
     li.appendChild(time);
     article.innerHTML = this.getString();
-    time.innerHTML = this.getDate();
- 
+    time.innerHTML = this.getDate().dateTime();
 };
+
+// En datumhanterade skapad för att få fram rätt format på tiden
+// Källa: http://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript
+Date.prototype.dateTime = function() {
+    return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes();
+}
