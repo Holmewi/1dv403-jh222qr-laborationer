@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Oswald-Regular;
+    src: url(../fonts/Oswald-Regular.ttf);
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -21,9 +26,17 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	outline: 0;
 }
 body {
-	line-height: 1;
-	color: black;
-	background: #b0e0e6;
+    line-height: 1;
+    color: #604f33;
+    font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ad2103), to(#d82e0a));
+    background: -moz-gradient(linear, left top, left bottom, from(#ad2103), to(#d82e0a));
+    background: -o-gradient(linear, left top, left bottom, from(#ad2103), to(#d82e0a));
+    background: -gradient(linear, left top, left bottom, from(#ad2103), to(#d82e0a));
+    min-height: 100%;
+}
+html{
+    min-height: 100%;
 }
 ol, ul {
 	list-style: none;
@@ -45,13 +58,19 @@ blockquote, q {
 	quotes: "" "";
 }
 
+h1 {
+    font-size: 36px;
+    color: #f9ebba;
+    text-transform: uppercase;
+    font-family: Oswald-Regular;
+}
+
 #wrapper {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 5%;
     max-width: 500px;
     height: auto;
-    background-color: #b0e0e6;
 }
 
 header {
@@ -62,10 +81,15 @@ header {
 
 main {
     width: 100%;
-    background-color: #665522;
+    background-color: #f0d7a1;
     padding-bottom: 10px;
     padding-top: 10px;
     height: auto;
+    -webkit-box-shadow: 0px 0px 20px #781803;
+}
+
+aside {
+    margin-bottom: 5px;
 }
 
 #form {
@@ -82,14 +106,28 @@ main {
 	width: 100%;
     min-height: 50px;
     clear:both;
+    background-color: #f9f6e5;
+    font-size: 14px;
+}
+
+#textField:focus {
+    background-color: #fdfdf5;
 }
 
 #send {
-    margin-top:7px;
     float:right;
-    width: 150px;
-    font-size: 100px;
-    font-family: verdana;
+    margin-top: 15px;
+    margin-bottom:15px;
+    border: 1px solid #1F5873;
+    padding: 15px;
+    font-size: 18px;
+    line-height: 17px;
+    width: 35%;
+    color: #FAFAFA;
+    background: -webkit-gradient(linear, left top, left bottom, from(#9fdffd), to(#138dc5));
+    -webkit-appearance: none;
+    -webkit-box-shadow: 1px 1px 1px #fff;
+    -webkit-border-radius: 0.5em;
 }
 
 #comments {
@@ -106,7 +144,7 @@ main {
 
 #comments ul li {
     width: auto;
-    background: #F1F1F1;
+    background: #f9ebba;
     margin: 0px 0px 7px 0px;
     padding: 10px;
     overflow: auto;
@@ -121,15 +159,13 @@ main {
 #commentList aside {
     width:10%;
     float:right;
-    background: green;
 }
 
 #commentList time {
     width:100%;
     float: right;
     text-align: right;
-    background: pink;
-    font-size:10px;
+    font-size:12px;
     font-family:verdana;
 }
 
@@ -145,6 +181,10 @@ main {
 
 #messageCount {
     text-align: right;
+    font-size:12px;
+    font-family:verdana;
+    margin-top: 6px;
+    margin-bottom: 12px;
 }
 
 /* JS elements */
