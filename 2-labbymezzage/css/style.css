@@ -28,7 +28,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 body {
     line-height: 1;
     color: #604f33;
-    font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    font-family: verdana, "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
     background: -webkit-gradient(linear, left top, left bottom, from(#ad2103), to(#d82e0a));
     background: -moz-gradient(linear, left top, left bottom, from(#ad2103), to(#d82e0a));
     background: -o-gradient(linear, left top, left bottom, from(#ad2103), to(#d82e0a));

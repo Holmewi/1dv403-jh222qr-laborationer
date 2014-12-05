@@ -33,8 +33,11 @@ Message.prototype.showMessage = function() {
 
 // En datumhanterade skapad för att få fram rätt format på tiden
 // Källa: http://stackoverflow.com/questions/10211145/getting-current-date-and-time-in-javascript
-Date.prototype.dateTime = function() {
-    return ((this.getHours() < 10)?"0":"") + this.getHours() +":"+ ((this.getMinutes() < 10)?"0":"") + this.getMinutes() +":"+ ((this.getSeconds() < 10)?"0":"") + this.getSeconds();
+Message.prototype.getDateText = function() {
+    // Namngav måndaderna genom att lägga dem i en array och hämta ut dem genom att skriva ut månadens nummer i arrayen
+    // Källa: http://stackoverflow.com/questions/1643320/get-month-name-from-date
+    var monthNames = [ "januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december" ];
+    return "Inlägget skapades den " + this.getDate().getDate() + " " + monthNames[this.getDate().getMonth()] + " " +this.getDate().getFullYear() + " klockan " + this.getDate().toLocaleTimeString();
 }
 
 Message.prototype.toString = function() {
