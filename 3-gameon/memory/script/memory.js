@@ -2,10 +2,16 @@
 
 var Memory = {
     
+    randomNumbers: [],
+    
     init : function() {
         // Sätter hur många rader och kolumnder tabellen ska innehålla
         var rows = 4;
         var cols = 4;
+        
+        // Skickar in slumpade nummer i en array
+        Memory.randomNumbers = RandomGenerator.getPictureArray(rows, cols);
+        console.log(Memory.randomNumbers);
         
         // Kör funktionen som renderar spelet
         Memory.renderMemory(rows, cols);
@@ -45,6 +51,11 @@ var Memory = {
         tr.appendChild(td);
         td.appendChild(a);
         a.appendChild(img);
+        
+        a.onclick = function() {
+            var randomImage = "pics/" + 1 + ".png";
+            img.setAttribute("src", randomImage);
+        }
     }
     
 };
