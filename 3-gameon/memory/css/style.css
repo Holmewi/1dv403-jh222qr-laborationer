@@ -87,26 +87,25 @@ main {
     -webkit-box-shadow: 0px 0px 20px #781803;
 }
 
-section{
-    margin: 20px;
-    text-align: center;
-
+#memoryBoard {
+    width: auto;
 }
-
-/* TABLE */
 
 #counter {
     border-collapse: collapse;
     width: auto;
     min-height: auto;
-    background-color: #FFFFFF;
-    margin-left: auto;
-    margin-right: auto
-
+    margin: 20px;
+    text-align: center;
 }
 
+/* TABLE */
+
+
 table {
-   border: 2px solid #c0e8fd;
+    border: 2px solid #c0e8fd;   
+    margin-left: auto;
+    margin-right: auto;
 }
 
 td {
