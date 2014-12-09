@@ -4,12 +4,16 @@ var Memory = {
     
     randomNumbers: [],
     count: 0,
+    brickOne: undefined,
+    brickTwo: undefined,
+    guesses: 0,
 
     init : function() {
         // Sätter hur många rader och kolumnder tabellen ska innehålla
         var rows = 4;
         var cols = 4;
         var brickID = 0;
+        
 
         // Skickar in slumpade nummer i en array
         Memory.randomNumbers = RandomGenerator.getPictureArray(rows, cols);
@@ -17,6 +21,7 @@ var Memory = {
         
         // Kör funktionen som renderar spelet
         Memory.renderMemory(rows, cols, brickID);
+        Memory.guessCount();
     },
     
     renderMemory : function(rows, cols, brickID) {
@@ -58,28 +63,56 @@ var Memory = {
         a.appendChild(img);
         
         a.onclick = function() {
-            Memory.turnBrick(img, randomImage);
+            Memory.turnBrick(img, randomImage, brickID);
         };
     },
     
-    turnBrick : function(img, randomImage){
+    turnBrick : function(img, randomImage, brickID){
         
-
             if(img.getAttribute("src") === "pics/0.png"){
             
             
                 if(Memory.count < 2){
                     img.setAttribute("src", randomImage);
                     Memory.count += 1;
-                    //console.log(img.getAttribute("src"));
                     
+                    //console.log(img.getAttribute("src"));
                     console.log(Memory.count);
+                    console.log(Memory.randomNumbers[brickID]);
+                    
+                    if(Memory.count === 1){
+                        Memory.brickOne = Memory.randomNumbers[brickID];
+                    }
+                    if(Memory.count === 2){
+                        Memory.brickTwo = Memory.randomNumbers[brickID];
+                        
+                        if(Memory.brickOne === Memory.brickTwo){
+                        console.log("RÄTT!");
+
+                        } else {
+                            
+                            
+                        }
+                        Memory.count = 0;
+                        Memory.guesses +=1;
+                        Memory.guessCount();
+                    }
+                    
+                    console.log("Bricka 1: " + Memory.brickOne);
+                    console.log("Bricka 2: " + Memory.brickTwo);
+                    
+                    
+    
                 }
-                else{
-                    console.log("TEST");
-                }
+                
+                console.log("Antal gissningar: " + Memory.guesses);
             }
         
+    },
+    
+    guessCount : function(){
+        var p = document.getElementById("messageCount");
+        p.innerHTML = "Antal gissningar: " + Memory.guesses;
     }
     
 };
