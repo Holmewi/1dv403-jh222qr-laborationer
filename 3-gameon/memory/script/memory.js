@@ -4,14 +4,17 @@ var Memory = {
     
     randomNumbers: [],
     count: 0,
-    brickOne: undefined,
-    brickTwo: undefined,
+    brickOneSrc: undefined,
+    brickOneID: undefined,
+    brickTwoSrc: undefined,
+    brickTwoID: undefined,
+    pairs: 0,
     guesses: 0,
 
     init : function() {
         // Sätter hur många rader och kolumnder tabellen ska innehålla
-        var rows = 4;
-        var cols = 4;
+        var rows = 2;
+        var cols = 2;
         var brickID = 0;
         
 
@@ -54,65 +57,103 @@ var Memory = {
         var a = document.createElement("a");
         var img = document.createElement("img");
         img.setAttribute("src", "pics/0.png");
+        img.setAttribute("class", "prevent");
         a.href = "#";
         
-        var randomImage = "pics/" + Memory.randomNumbers[brickID - 1] + ".png";
         
         tr.appendChild(td);
         td.appendChild(a);
         a.appendChild(img);
         
         a.onclick = function() {
-            Memory.turnBrick(img, randomImage, brickID);
+            Memory.turnBrick(img, brickID);
         };
     },
     
-    turnBrick : function(img, randomImage, brickID){
-        
-            if(img.getAttribute("src") === "pics/0.png"){
-            
-            
-                if(Memory.count < 2){
-                    img.setAttribute("src", randomImage);
-                    Memory.count += 1;
-                    
-                    //console.log(img.getAttribute("src"));
-                    console.log(Memory.count);
-                    console.log(Memory.randomNumbers[brickID]);
-                    
-                    if(Memory.count === 1){
-                        Memory.brickOne = Memory.randomNumbers[brickID];
-                    }
-                    if(Memory.count === 2){
-                        Memory.brickTwo = Memory.randomNumbers[brickID];
-                        
-                        if(Memory.brickOne === Memory.brickTwo){
-                        console.log("RÄTT!");
+    turnBrick : function(img, brickID){
+        var randomImage = "pics/" + Memory.randomNumbers[brickID - 1] + ".png";
 
-                        } else {
+        if(img.getAttribute("src") === "pics/0.png"){
+        
+            if(Memory.count < 2){
+                img.setAttribute("src", randomImage);
+                Memory.count += 1;
+                
+                //console.log(img.getAttribute("src"));
+                console.log(Memory.count);
+                console.log(Memory.randomNumbers[brickID]);
+                
+                if(Memory.count === 1){
+                    Memory.brickOneSrc = img;
+                    Memory.brickOneID = brickID;
+                    //Memory.brickOneImg.setAttribute("id", "brickOne");
+                    //var imgOne = document.getElementById("brickOne");
+                }
+                if(Memory.count === 2){
+                    Memory.brickTwoSrc = img;
+                    Memory.brickTwoID = brickID;
+                    //Memory.brickTwoImg.setAttribute("id", "brickTwo");
+                    //var imgTwo = document.getElementById("brickTwo");
+                    
+                    if(Memory.brickOneSrc.src === Memory.brickTwoSrc.src){
+                        Memory.pairs += 1;
+                        
+                    } else {
+                        setTimeout(function(){
+
+        					Memory.brickOneSrc.src = "pics/0.png";
+        					Memory.brickTwoSrc.src = "pics/0.png";
+        					                                                                    // Hur kan jag sätta en halt på mitt onclick?
+        					(".prevent").on("click", function(e){
+                                e.preventDefault();
+        					});
+        					
+                            /*
+                            Memory.brickOneSrc.firstChil
+                            Memory.brickTwoSrc.setAttribute("src", "pics/0.png");
+                            
+                            //Memory.randomNumbers[Memory.brickOneID].src = "pics/0.png";
+                            
+                            /*
+                            Memory.brickOneSrc = "pics/0.png";
+                            Memory.brickTwoSrc = "pics/0.png";
                             
                             
-                        }
-                        Memory.count = 0;
-                        Memory.guesses +=1;
-                        Memory.guessCount();
+                            
+                            imgOne.setAttribute("src", "pics/0.png");
+                            imgOne.setAttribute("id", "")
+                            imgTwo.setAttribute("src", "pics/0.png");
+                            imgTwo.setAttribute("id", "")
+                            */
+        
+        				},1500);
+				
                     }
-                    
-                    console.log("Bricka 1: " + Memory.brickOne);
-                    console.log("Bricka 2: " + Memory.brickTwo);
-                    
-                    
-    
+                    Memory.count = 0;
+                    Memory.guesses +=1;
+                    Memory.guessCount();
                 }
                 
-                console.log("Antal gissningar: " + Memory.guesses);
+                console.log("Bricka 1: " + Memory.brickOneSrc.src);
+                console.log("Bricka 2: " + Memory.brickTwoSrc.src);
+                console.log("Test: " + img.src);
+                
+                
+
             }
+            
+            console.log("Antal gissningar: " + Memory.guesses);
+        }
         
     },
     
     guessCount : function(){
         var p = document.getElementById("messageCount");
         p.innerHTML = "Antal gissningar: " + Memory.guesses;
+        if(Memory.pairs === Memory.randomNumbers.length / 2){
+            p.innerHTML = "Du klarade det på " + Memory.guesses + " försök!";
+        }
+        
     }
     
 };
