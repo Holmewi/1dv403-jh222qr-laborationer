@@ -10,11 +10,12 @@ var Memory = {
     brickTwoID: undefined,
     pairs: 0,
     guesses: 0,
+    halt: false,
 
     init : function() {
         // Sätter hur många rader och kolumnder tabellen ska innehålla
-        var rows = 2;
-        var cols = 2;
+        var rows = 4;
+        var cols = 4;
         var brickID = 0;
         
 
@@ -66,13 +67,16 @@ var Memory = {
         a.appendChild(img);
         
         a.onclick = function() {
-            Memory.turnBrick(img, brickID);
+            Memory.turnBrick(img, brickID, a);
+            
         };
+        
     },
     
-    turnBrick : function(img, brickID){
+    turnBrick : function(img, brickID, a){
         var randomImage = "pics/" + Memory.randomNumbers[brickID - 1] + ".png";
 
+    if(Memory.halt === false){
         if(img.getAttribute("src") === "pics/0.png"){
         
             if(Memory.count < 2){
@@ -94,19 +98,18 @@ var Memory = {
                     Memory.brickTwoID = brickID;
                     //Memory.brickTwoImg.setAttribute("id", "brickTwo");
                     //var imgTwo = document.getElementById("brickTwo");
-                    
+                    Memory.halt = true;
                     if(Memory.brickOneSrc.src === Memory.brickTwoSrc.src){
                         Memory.pairs += 1;
-                        
+                        Memory.halt = false;
                     } else {
                         setTimeout(function(){
 
         					Memory.brickOneSrc.src = "pics/0.png";
         					Memory.brickTwoSrc.src = "pics/0.png";
+        					
         					                                                                    // Hur kan jag sätta en halt på mitt onclick?
-        					(".prevent").on("click", function(e){
-                                e.preventDefault();
-        					});
+        					Memory.halt = false;
         					
                             /*
                             Memory.brickOneSrc.firstChil
@@ -126,8 +129,8 @@ var Memory = {
                             imgTwo.setAttribute("id", "")
                             */
         
-        				},1500);
-				
+        				},1000);
+				        a.href = "#";
                     }
                     Memory.count = 0;
                     Memory.guesses +=1;
@@ -137,6 +140,7 @@ var Memory = {
                 console.log("Bricka 1: " + Memory.brickOneSrc.src);
                 console.log("Bricka 2: " + Memory.brickTwoSrc.src);
                 console.log("Test: " + img.src);
+                console.log("Count: " + Memory.count);
                 
                 
 
@@ -144,6 +148,9 @@ var Memory = {
             
             console.log("Antal gissningar: " + Memory.guesses);
         }
+        
+    }
+        
         
     },
     
