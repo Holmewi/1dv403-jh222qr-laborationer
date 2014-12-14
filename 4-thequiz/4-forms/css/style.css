@@ -81,20 +81,44 @@ header {
 
 main {
     width: auto;
+    margin-left: auto;
+    margin-right: auto;
     background-color: #f4fbff;
     padding: 10px;
     height: auto;
     -webkit-box-shadow: 0px 0px 20px #781803;
 }
 
-#navigator {
+#quizBoard {
+    width: 80%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #444;
+}
+
+#quizBoard p {
+    
+}
+
+#answer {
+    height: 30px;
+    width: 100%;
+    font-size: 18px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#quizNav {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
 }
 
-#startQuiz {
+
+
+.button {
     margin-top: 15px;
     margin-bottom:15px;
     border: 1px solid #88daff;
@@ -109,12 +133,12 @@ main {
     -webkit-border-radius: 0.5em;
 }
 
-#startQuiz:hover {
+.button:hover {
         /*background: -webkit-gradient(linear, left top, left bottom, from(#9fdffd), to(#3dbcf6));*/
         border: 1px solid #2d95c4;
 }
 
-#startQuiz:active {
+.button:active {
         background: -webkit-gradient(linear, left top, left bottom, from(#3dbcf6), to(#118fc8));
 }
 
@@ -125,9 +149,7 @@ main {
 
 /* OLD */
 
-#memoryBoard {
-    width: auto;
-}
+
 
 #counter {
     border-collapse: collapse;
