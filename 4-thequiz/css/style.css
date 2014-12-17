@@ -151,3 +151,7 @@ main {
     top: 0px;
     left: 0px;
 }
+
+.result {
+    font-size: 12px;
+}
