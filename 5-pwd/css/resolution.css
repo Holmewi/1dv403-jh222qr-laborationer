@@ -16,3 +16,11 @@
     right: 0;
     margin: auto;
 }
+
+#menubar {
+    position: absolute;
+    height: 50px;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+}
