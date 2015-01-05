@@ -23,7 +23,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 body {
 	line-height: 1;
 	color: black;
-	background: white;
+	background: black;
 }
 ol, ul {
 	list-style: none;
@@ -45,12 +45,3 @@ blockquote, q {
 	quotes: "" "";
 }
 
-/* DESKTOP */
-
-#menubar {
-    position: absolute;
-    height: 50px;
-    bottom: 0;
-    width: 100%;
-    background-color: red;
-}
