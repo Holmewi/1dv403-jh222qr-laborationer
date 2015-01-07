@@ -205,7 +205,7 @@ aside {
     background-repeat: no-repeat;
     width: 20px;
     height: 20px;
-    background-image:url("../pics/iconDelete.png");
+    background-image:url("../icons/icon-close.png");
     background-size: 20px 20px;
     cursor:pointer;
     border: none;

@@ -21,6 +21,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 	outline: 0;
 }
 body {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	line-height: 1;
 	color: black;
 	background: black;
