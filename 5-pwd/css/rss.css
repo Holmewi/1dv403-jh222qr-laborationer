@@ -1,0 +1,27 @@
+.rssFeed {
+    width: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    display: table;
+}
+
+.rss_title {
+    display: block;
+    width: auto;
+    font-size: 24px;
+    clear: both;
+    padding-top: 25px;
+    padding-bottom: 7px;
+    
+}
+
+.rssFeed p {
+    padding-top: 7px;
+    padding-bottom: 25px;
+    display: inline-block;
+    width: 100%;
+    clear: both;
+    border-bottom: 1px solid black;
+    
+}
