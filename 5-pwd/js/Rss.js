@@ -22,7 +22,7 @@ var Rss = {
                 if(xhr.readyState === 4){
                     if(xhr.status === 200){
                         console.log(xhr.responseText);
-                        appFooter.innerHTML = "Done";
+                        appFooter.innerHTML = "<p>Done</p>";
                         //Rss.viewRss(JSON.parse(xhr.responseText), appContent);
                         appContent.innerHTML = xhr.responseText;
                     }
@@ -30,7 +30,7 @@ var Rss = {
             };
             
             appFooter.innerHTML = "<img src='gif/ajax-loader.gif' border=0/>";
-            appFooter.innerHTML += "Loading...";
+            appFooter.innerHTML += "<p>Loading...</p>";
             
             xhr.open("GET", "http://homepage.lnu.se/staff/tstjo/labbyServer/rssproxy/?url="+escape("http://rt.com/rss/news/"));
             xhr.send(null);

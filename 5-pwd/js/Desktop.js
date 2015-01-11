@@ -2,12 +2,12 @@
 
 var Desktop = {
     
-    windowWidth : 1024,
-    windowHeight : 640,
+    windowWidth : 1280,
+    windowHeight : 960,
     
     imageViewer : new App("Image Viewer", "icons/icon-img-view.png", 292, 350),
     rss : new App("RSS", "icons/icon-rss.png", 400, 500),
-    memory : new App("Memory", "icons/icon-memory.png", ((Memory.cols * 75) + 50), ((Memory.rows * 75) + 100)),
+    memory : new App("Memory", "icons/icon-memory.png", ((Memory.cols * 75) + 60), ((Memory.rows * 75) + 155)),
 
     apps : [],
     zindex : 0,
@@ -18,14 +18,21 @@ var Desktop = {
         console.log("Desktop");
         Desktop.resizeWindow();
         Desktop.createDesktop();
+        
     },
     
     createDesktop : function() {
         var desktop = document.createElement('div');
-        //var menubar = document.createElement('section');
-        desktop.setAttribute('id', 'desktop');
-        desktop.setAttribute('class', 'resolution');
-        desktop.setAttribute('style', 'width:' + Desktop.windowWidth + 'px; height:' + Desktop.windowHeight + 'px');
+        
+        desktop.setAttribute('id', 'desktop'); //Byt mellan id [desktop] och [fullscreen]
+        
+        if(desktop.id === 'desktop'){
+            console.log("EXSIST");
+            Resizer.check(desktop);
+        }
+        //desktop.setAttribute('class', 'resolution');
+        //desktop.setAttribute('style', 'width:' + Desktop.windowWidth + 'px; height:' + Desktop.windowHeight + 'px');
+        
         Desktop.menubar.setAttribute('id', 'menubar');
         document.getElementsByTagName('body')[0].appendChild(desktop);
         desktop.appendChild(Desktop.menubar);
@@ -45,9 +52,12 @@ var Desktop = {
             
             var a = document.createElement('a');
             a.href = "#";
+            a.setAttribute('title', Desktop.apps[i].getName());
+            a.setAttribute('class', 'tooltip');
             var img = document.createElement('img');
             img.setAttribute('src', Desktop.apps[i].getIcon());
             img.setAttribute('class', 'menuicon');
+            
             menubar.appendChild(a);
             a.appendChild(img);
             Desktop.openWindow(a, i);
@@ -128,13 +138,25 @@ var Desktop = {
             var target = event.target;
         
             // add the change in coords to the previous width of the target element
-            var newWidth  = parseFloat(target.style.width ) + event.dx,
+            var newWidth  = parseFloat(target.style.width) + event.dx,
                 newHeight = parseFloat(target.style.height) + event.dy;
         
             // update the element's style
-            target.style.width  = newWidth + 'px';
-            target.style.height = newHeight + 'px';
-        
+            var screenWidth = window.innerWidth;
+            var screenHeight = window.innerHeight;
+
+            console.log(target.style.width);
+            
+            if(newWidth > screenWidth){
+                newWidth = screenWidth;
+            } 
+                target.style.width  = newWidth + 'px';
+            
+            if(newHeight > screenHeight){
+                newHeight = screenHeight;
+            } 
+                target.style.height = newHeight + 'px';
+            
         });
     }
 

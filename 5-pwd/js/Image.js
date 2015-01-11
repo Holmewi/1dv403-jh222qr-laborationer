@@ -44,10 +44,10 @@ Image.prototype.openImage = function(i){
     closeButton.setAttribute("class", "closeButton");
     
     closeButton.onclick = function(){
-        var result = confirm("Är du säker att du vill stänga fönstret?");
-        if(result === true){
+        //var result = confirm("Är du säker att du vill stänga fönstret?");
+        //if(result === true){
             imageWindow.parentNode.removeChild(imageWindow);
-        }
+        //}
         
     };
     imgHeader.appendChild(closeButton);

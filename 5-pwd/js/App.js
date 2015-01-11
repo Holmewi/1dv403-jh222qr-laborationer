@@ -45,21 +45,25 @@ App.prototype.openApp = function(i, array){
     img.setAttribute('class', 'headericon');
     appHeader.appendChild(img);
     
-    appHeader.innerHTML += Desktop.apps[i].getName();
+    var p = document.createElement('p');
+    p.setAttribute('class', 'title');
+    appHeader.appendChild(p);
+    
+    p.innerHTML += Desktop.apps[i].getName();
     
     var closeButton = document.createElement("input");
     closeButton.type = "button";
     closeButton.setAttribute("class", "closeButton");
     
     closeButton.onclick = function(){
-        var result = confirm("Är du säker att du vill stänga fönstret?");
-        if(result === true){
+        //var result = confirm("Är du säker att du vill stänga fönstret?");
+        //if(result === true){
             appWindow.parentNode.removeChild(appWindow);
             if(array[i].getName() === "RSS"){
                 Rss.stopInterval();
             }
             
-        }
+        //}
         
     };
     appHeader.appendChild(closeButton);
@@ -121,7 +125,7 @@ App.prototype.openApp = function(i, array){
         appWindow.setAttribute('class', appWindow.getAttribute('class') + ' draggable');
         //appWindow.setAttribute('class', appWindow.getAttribute('class') + ' resize');
         appWindow.style.top = (Memory.positionTop + 20) + "px";
-        appWindow.style.left = (Memory.positionLeft + 20) + "px";
+        appWindow.style.left = (Desktop.imageViewer.getWidth() + Desktop.rss.getWidth() + Memory.positionLeft + 60) + "px";
         Memory.positionTop += 20;
         Memory.positionLeft += 20;
         if((Memory.positionTop + array[i].getHeight() + 20) > Desktop.windowHeight){
