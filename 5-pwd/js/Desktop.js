@@ -142,20 +142,28 @@ var Desktop = {
                 newHeight = parseFloat(target.style.height) + event.dy;
         
             // update the element's style
+            var screen = document.getElementById("desktop");
             var screenWidth = window.innerWidth;
             var screenHeight = window.innerHeight;
 
-            console.log(target.style.width);
+            if(screen.style.width === "100%"){
+                if(newWidth > screenWidth){
+                    newWidth = screenWidth;
+                }
+                if(newHeight > screenHeight){
+                    newHeight = screenHeight;
+                }
+            } else {
+                if(newWidth > Desktop.windowWidth){
+                    newWidth = Desktop.windowWidth;
+                }
+                if(newHeight > Desktop.windowHeight){
+                    newHeight = Desktop.windowHeight;
+                }
+            }
             
-            if(newWidth > screenWidth){
-                newWidth = screenWidth;
-            } 
-                target.style.width  = newWidth + 'px';
-            
-            if(newHeight > screenHeight){
-                newHeight = screenHeight;
-            } 
-                target.style.height = newHeight + 'px';
+            target.style.width  = newWidth + 'px';
+            target.style.height = newHeight + 'px';
             
         });
     }
