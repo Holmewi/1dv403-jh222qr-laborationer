@@ -1,6 +1,7 @@
 "use strict";
+var PWD = PWD || {};
 
-var ImageViewer = {
+PWD.ImageViewer = {
     positionTop : 0,
     positionLeft : 0,
 
@@ -15,7 +16,7 @@ var ImageViewer = {
                 if(xhr.status === 200){
                     //console.log(xhr.responseText);
                     appFooter.innerHTML = "<p>Done</p>";
-                    ImageViewer.loadImg(JSON.parse(xhr.responseText), appContent, appWindow);
+                    PWD.ImageViewer.loadImg(JSON.parse(xhr.responseText), appContent, appWindow);
                 }
             }
         };
@@ -67,32 +68,27 @@ var ImageViewer = {
             a.appendChild(img);
             
             //appContent.innerHTML += thumbImages[i].thumbURL + "<br />";
+            var image;
             
-            if((response[i].height + 25 + 60) > Desktop.windowHeight || (response[i].width) > Desktop.windowWidth){
-                console.log("BILD FÖR STOR")
+            if((response[i].height + 25 + 60) > window.innerHeight || (response[i].width) > window.innerWidth){
+                //console.log("BILD FÖR STOR");
                 var fixedHeight = response[i].height * 0.7;
                 var fixedWidth = response[i].width * 0.7;
-                var image = new Image(response[i].URL, fixedWidth, fixedHeight);
+                image = new Image(response[i].URL, fixedWidth, fixedHeight);
             } else {
-                var image = new Image(response[i].URL, response[i].width, response[i].height);
+                image = new Image(response[i].URL, response[i].width, response[i].height);
             }
             
-
-            ImageViewer.images.push(image);
+            PWD.ImageViewer.images.push(image);
             
-            ImageViewer.viewImg(a, i, appWindow);
-            
+            PWD.ImageViewer.viewImg(a, i, appWindow);
         }
     },
         
     viewImg : function(a, i, appWindow) {
-        
         a.addEventListener("click", function () {
-   
-            ImageViewer.images[i].openImage(i);
-            
+            PWD.ImageViewer.images[i].openImage(i);
         });
-        
     }
 };
 

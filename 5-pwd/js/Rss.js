@@ -1,16 +1,17 @@
 "use strict";
+var PWD = PWD || {};
 
-var Rss = {
+PWD.Rss = {
     positionTop : 0,
     positionLeft : 0,
     updater : undefined,
 
     getRss : function(appFooter, appContent) {
-        Rss.loadRss(appFooter, appContent);
+        PWD.Rss.loadRss(appFooter, appContent);
         
-        Rss.updater = setInterval(function() {
-            Rss.loadRss(appFooter, appContent);
-        }, 2250000);
+        PWD.Rss.updater = setInterval(function() {
+            PWD.Rss.loadRss(appFooter, appContent);
+        }, 50000);
     },
     
     loadRss : function(appFooter, appContent) {
@@ -21,7 +22,7 @@ var Rss = {
             xhr.onreadystatechange = function(){
                 if(xhr.readyState === 4){
                     if(xhr.status === 200){
-                        console.log(xhr.responseText);
+                        //console.log(xhr.responseText);
                         appFooter.innerHTML = "<p>Done</p>";
                         //Rss.viewRss(JSON.parse(xhr.responseText), appContent);
                         appContent.innerHTML = xhr.responseText;
@@ -37,6 +38,6 @@ var Rss = {
     },
     
     stopInterval : function() {
-        clearInterval(Rss.updater);
+        clearInterval(PWD.Rss.updater);
     }
 };

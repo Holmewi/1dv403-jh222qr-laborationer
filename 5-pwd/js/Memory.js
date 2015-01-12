@@ -1,9 +1,11 @@
 "use strict";
+var PWD = PWD || {};
 
-var Memory = {
+PWD.Memory = {
     positionTop : 0,
     positionLeft : 0,
-    // Tänk på att det måste vara jämnt antal brickor.
+    
+    // Tänk på att det måste vara jämnt antal brickor
     // Spelplanen får max innehålla 56 brickor
     rows : 4,
     cols : 4,
@@ -12,22 +14,21 @@ var Memory = {
     score : undefined,
     
     start : function(appFooter, appContent){
-        var gameID = 0 + Memory.memoryArray.length;
+        var gameID = 0 + PWD.Memory.memoryArray.length;
         var guesses = 0;
         var count = 0;
         var pairs = 0;
         var halt = false;
         var randomBricks = Math.floor(Math.random() * (27)) + 0;
-        console.log("KOLLAR" + randomBricks);
         
-        console.log(gameID);
-        console.log("IMAGE " + randomBricks);
+        //console.log("KOLLAR" + randomBricks);
+        //console.log(gameID);
+        //console.log("IMAGE " + randomBricks);
         
-        var memory = new MemoryBoard(RandomGenerator.getPictureArray(Memory.rows, Memory.cols), gameID, guesses, count, pairs, halt, randomBricks);
-        Memory.memoryArray.push(memory);
+        var memory = new MemoryBoard(PWD.RandomGenerator.getPictureArray(PWD.Memory.rows, PWD.Memory.cols), gameID, guesses, count, pairs, halt, randomBricks);
+        PWD.Memory.memoryArray.push(memory);
         
         memory.init(appFooter, appContent, memory);
-        
     }
 };
 
@@ -59,7 +60,6 @@ function MemoryBoard(randomNumber, gameID, guesses, count, pairs, halt, randomBr
     this.getRandomBricks = function() { return randomBricks; };
     this.setRandomBricks = function(_randomBricks) { randomBricks = _randomBricks; };
     this.setRandomBricks(randomBricks);
-
 }
 
 MemoryBoard.prototype.init = function(appFooter, appContent, memory){
@@ -74,10 +74,9 @@ MemoryBoard.prototype.init = function(appFooter, appContent, memory){
     var counter = document.createElement('div');
     var p = document.createElement('p');
     p.setAttribute('id', 'id' + memory.getGameID());
-    console.log(memory.getGameID());
     
-    
-    
+    //console.log(memory.getGameID());
+
     tableBoard.setAttribute('class', 'memoryBoard');
     counter.setAttribute('class', 'counter');
     
@@ -90,7 +89,7 @@ MemoryBoard.prototype.init = function(appFooter, appContent, memory){
     appFooter.innerHTML += "<p>Loading...</p>";
     
     // Kör funktionen som renderar spelet
-    memory.renderMemory(Memory.rows, Memory.cols, table, p, memory.getRandomNumber(), memory, this.brickID, appFooter);
+    memory.renderMemory(PWD.Memory.rows, PWD.Memory.cols, table, p, memory.getRandomNumber(), memory, this.brickID, appFooter);
     memory.guessCount(p, memory.getRandomNumber(), memory);
     
 };
@@ -98,17 +97,16 @@ MemoryBoard.prototype.init = function(appFooter, appContent, memory){
 MemoryBoard.prototype.renderMemory = function(rows, cols, table, p, randomNumbers, memory, brickID, appFooter){
     var i;
     var j;
-    console.log(memory.getRandomBricks());
+    //console.log(memory.getRandomBricks());
     
-    console.log("HOOOOO " + (memory.getRandomBricks() + randomNumbers.length));
-    if(Memory.rows * Memory.cols / 2 > 28){
+    if(PWD.Memory.rows * PWD.Memory.cols / 2 > 28){
         console.log("Spelplanen är för stor");
     }
     if(memory.getRandomBricks() + randomNumbers.length > 28){
         memory.setRandomBricks(28 - randomNumbers.length);
         // console.log("FÖR MÅNGA BRICKOR" + (memory.getRandomBricks() + randomNumbers.length - 1));
     }
-    console.log("BRICK " + memory.getRandomBricks());
+    //console.log("BRICK " + memory.getRandomBricks());
     
     // Loopar i genom antalet rows
     // Skriver ut en rad och kör en nästrlad loop för varje loop
@@ -133,8 +131,7 @@ MemoryBoard.prototype.renderBricks = function(tr, p, randomNumbers, memory, bric
     img.setAttribute("src", "pics/0.png");
     img.setAttribute("class", "prevent");
     a.href = "#";
-    
-    
+
     tr.appendChild(td);
     td.appendChild(a);
     a.appendChild(img);
@@ -142,9 +139,7 @@ MemoryBoard.prototype.renderBricks = function(tr, p, randomNumbers, memory, bric
     appFooter.innerHTML = "<p>Done</p>";
     
     a.onclick = function() {
-        
         memory.turnBrick(img, a, p, randomNumbers, memory, brickID);
-        
     };
 };
 
@@ -165,19 +160,15 @@ MemoryBoard.prototype.turnBrick = function(img, a, p, randomNumbers, memory, bri
                 
                 //console.log(img.getAttribute("src"));
                 //console.log(randomNumbers[brickID]);
-                
-                
+
                 if(memory.getCount() === 1){
                     
                     this.brickOneSrc = img;
                     // console.log(Memory.brickOneSrc);
-                    //Memory.brickOneID = brickID;
-                    // console.log(Memory.brickOneID);
 
                 }
                 if(memory.getCount() === 2){
                     this.brickTwoSrc = img;
-                    //Memory.brickTwoID = brickID;
 
                     memory.setHalt(true);
                     if(this.brickOneSrc.src === this.brickTwoSrc.src){
@@ -185,52 +176,36 @@ MemoryBoard.prototype.turnBrick = function(img, a, p, randomNumbers, memory, bri
                         memory.setHalt(false);
                     } else {
                         setTimeout(function(){
-
         					memory.brickOneSrc.src = "pics/0.png";
         					memory.brickTwoSrc.src = "pics/0.png";
         					
         			        memory.setGuesses(memory.getGuesses() + 1);
                             memory.guessCount(p, randomNumbers, memory);                                                             
         					memory.setHalt(false);
-        					
-                           
-        
         				},1000);
 				        a.href = "#";
                     }
                     memory.setCount(0);
-                    
+                    if(memory.getPairs() === randomNumbers.length / 2){
+                        memory.guessCount(p, randomNumbers, memory);
+                    }
                 }
                 
                 //console.log("Bricka 1: " + Memory.brickOneSrc.src);
                 //console.log("Bricka 2: " + Memory.brickTwoSrc.src);
                 console.log("Test: " + img.src);
                 console.log("Count: " + memory.getCount());
-                
-                
-
             }
-            
             console.log("Antal gissningar: " + memory.getGuesses());
         }
-        
     }
 };
 
 MemoryBoard.prototype.guessCount = function(p, randomNumbers, memory){
-        //console.log(memory.getGuesses());
-        
-        //for(var i = 0; i < Memory.memoryArray.length; i += 1){
-            //if(Memory.memoryArray[i].getGameID() === i){
-                //score = document.getElementById('id' + Memory.memoryArray[i].getGameID());
-                p.innerHTML = "Antal gissningar: " + memory.getGuesses();
-        
-                if(memory.getPairs() === randomNumbers.length / 2){
-                p.innerHTML = "Du klarade det på " + memory.getGuesses() + " försök!";
-                }
-            
-            //}
-        //}
-        
-        
+    //console.log(memory.getGuesses());
+    p.innerHTML = "Antal felvända brickor: " + memory.getGuesses();
+
+    if(memory.getPairs() === randomNumbers.length / 2){
+        p.innerHTML = "Du klarade det med " + memory.getGuesses() + " fel!";
+    }
 };

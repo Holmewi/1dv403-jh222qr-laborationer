@@ -1,13 +1,13 @@
 "use strict";
+var PWD = PWD || {};
 
-var Desktop = {
-    
-    windowWidth : 1280,
-    windowHeight : 960,
+PWD.Desktop = {
+    windowWidth : 12000,
+    windowHeight : 8000,
     
     imageViewer : new App("Image Viewer", "icons/icon-img-view.png", 292, 350),
     rss : new App("RSS", "icons/icon-rss.png", 400, 500),
-    memory : new App("Memory", "icons/icon-memory.png", ((Memory.cols * 75) + 60), ((Memory.rows * 75) + 155)),
+    memory : new App("Memory", "icons/icon-memory.png", ((PWD.Memory.cols * 75) + 60), ((PWD.Memory.rows * 75) + 155)),
 
     apps : [],
     zindex : 0,
@@ -16,75 +16,70 @@ var Desktop = {
 
     init : function() {
         console.log("Desktop");
-        Desktop.resizeWindow();
-        Desktop.createDesktop();
+        PWD.Desktop.resizeWindow();
+        PWD.Desktop.createDesktop();
         
     },
     
     createDesktop : function() {
         var desktop = document.createElement('div');
         
-        desktop.setAttribute('id', 'desktop'); //Byt mellan id [desktop] och [fullscreen]
+        desktop.setAttribute('id', 'desktop');
         
         if(desktop.id === 'desktop'){
-            console.log("EXSIST");
-            Resizer.check(desktop);
+            PWD.Resizer.check(desktop);
         }
         //desktop.setAttribute('class', 'resolution');
         //desktop.setAttribute('style', 'width:' + Desktop.windowWidth + 'px; height:' + Desktop.windowHeight + 'px');
         
-        Desktop.menubar.setAttribute('id', 'menubar');
+        PWD.Desktop.menubar.setAttribute('id', 'menubar');
         document.getElementsByTagName('body')[0].appendChild(desktop);
-        desktop.appendChild(Desktop.menubar);
+        desktop.appendChild(PWD.Desktop.menubar);
     
-        Desktop.renderMenuIcons(Desktop.menubar);
-        
+        PWD.Desktop.renderMenuIcons(PWD.Desktop.menubar);
     },
     
     renderMenuIcons : function(menubar) {
-        Desktop.apps.push(Desktop.imageViewer);
-        Desktop.apps.push(Desktop.rss);
-        Desktop.apps.push(Desktop.memory);
+        PWD.Desktop.apps.push(PWD.Desktop.imageViewer);
+        PWD.Desktop.apps.push(PWD.Desktop.rss);
+        PWD.Desktop.apps.push(PWD.Desktop.memory);
         
         var i;
         
-        for(i = 0; i < Desktop.apps.length; i += 1){
-            
+        for(i = 0; i < PWD.Desktop.apps.length; i += 1){
             var a = document.createElement('a');
             a.href = "#";
-            a.setAttribute('title', Desktop.apps[i].getName());
+            a.setAttribute('title', PWD.Desktop.apps[i].getName());
             a.setAttribute('class', 'tooltip');
             var img = document.createElement('img');
-            img.setAttribute('src', Desktop.apps[i].getIcon());
+            img.setAttribute('src', PWD.Desktop.apps[i].getIcon());
             img.setAttribute('class', 'menuicon');
             
             menubar.appendChild(a);
             a.appendChild(img);
-            Desktop.openWindow(a, i);
+            PWD.Desktop.openWindow(a, i);
         }
     },
     
     openWindow : function(a, i) {
         a.addEventListener("click", function () {
-            console.log("APP " + Desktop.apps[i].getName());
-            console.log("APP " + Desktop.apps[i].getWidth() + ", " + Desktop.apps[i].getHeight());
-            Desktop.apps[i].openApp(i, Desktop.apps);
-            Desktop.position += 10;
+            console.log("APP " + PWD.Desktop.apps[i].getName());
+            console.log("APP " + PWD.Desktop.apps[i].getWidth() + ", " + PWD.Desktop.apps[i].getHeight());
+            PWD.Desktop.apps[i].openApp(i, PWD.Desktop.apps);
+            PWD.Desktop.position += 10;
         });
     },
     
     // Ändrar zindex för ett specifikt fönster
     arrangeWindow : function(z, appWindow) {
-        
         //console.log(z);
         //console.log(Desktop.zindex);
         //console.log(appWindow.style.zIndex);
 
-        z += Desktop.zindex;
-        appWindow.style.zIndex = Desktop.zindex;
-        Desktop.menubar.style.zIndex = Desktop.zindex + 1;
-        Desktop.zindex = z;
-        
+        z += PWD.Desktop.zindex;
+        appWindow.style.zIndex = PWD.Desktop.zindex;
+        PWD.Desktop.menubar.style.zIndex = PWD.Desktop.zindex + 1;
+        PWD.Desktop.zindex = z;
     },
     
     // Källa: http://interactjs.io/
@@ -154,22 +149,19 @@ var Desktop = {
                     newHeight = screenHeight;
                 }
             } else {
-                if(newWidth > Desktop.windowWidth){
-                    newWidth = Desktop.windowWidth;
+                if(newWidth > PWD.Desktop.windowWidth){
+                    newWidth = PWD.Desktop.windowWidth;
                 }
-                if(newHeight > Desktop.windowHeight){
-                    newHeight = Desktop.windowHeight;
+                if(newHeight > PWD.Desktop.windowHeight){
+                    newHeight = PWD.Desktop.windowHeight;
                 }
             }
-            
             target.style.width  = newWidth + 'px';
             target.style.height = newHeight + 'px';
-            
         });
     }
-
 };
 
 window.onload = function() {
-    Desktop.init();
+    PWD.Desktop.init();
 };

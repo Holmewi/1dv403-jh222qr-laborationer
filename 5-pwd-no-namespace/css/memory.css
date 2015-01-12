@@ -1,0 +1,52 @@
+.memoryBoard {
+    width: auto;
+}
+
+.counter {
+    
+    /*
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    */
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.counter p {
+
+    border: 2px solid #2294c6;
+    border-radius: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 7px;
+    padding-right: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 12px;
+    color: white;
+    width: 80%;
+    text-align: center;
+    background-image: url("../pics/mem-bg-score.png");
+}
+
+/* TABLE */
+
+
+table {
+    border: 0px solid #c0e8fd; 
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+td {
+    border: 0px dotted #c0e8fd;
+    height: 75px;
+    width: 75px;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
